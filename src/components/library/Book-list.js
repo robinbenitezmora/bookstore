@@ -2,7 +2,7 @@ import React from 'react';
 import './Book-list.css';
 import Book from '../book/Book';
 
-function bookList({ books }) {
+function BookList() {
   const books = [
     {
       id: 1,
@@ -31,4 +31,4 @@ function bookList({ books }) {
   );
 }
 
-export default bookList;
+export default BookList;

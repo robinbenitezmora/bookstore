@@ -1,6 +1,6 @@
 import React from 'react';
 
-function book({ title, author }) {
+function Book({ title, author }) {
   return (
     <div className="container-book">
       <div className="info-book">
@@ -17,4 +17,4 @@ function book({ title, author }) {
   );
 }
 
-export default book;
+export default Book;
