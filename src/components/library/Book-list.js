@@ -1,5 +1,4 @@
 import React from 'react';
-import './Book-list.css';
 import Book from '../book/Book';
 
 function BookList() {
@@ -19,12 +18,14 @@ function BookList() {
       title: 'Capital in the Twenty-First Century',
       author: 'Suzanne Collins',
     },
-  ]
+  ];
   return (
     <div className="container-book-list">
       <ul className="book-list">
         {books.map((book) => (
-          <Book key={book.id} {...book} />
+          <li key={book.id}>
+            <Book title={book.title} author={book.author} />
+          </li>
         ))}
       </ul>
     </div>
