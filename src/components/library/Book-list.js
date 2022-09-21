@@ -2,20 +2,17 @@ import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import Book from '../book/Book';
 
-function BookList() {
+const BookList = () => {
   const books = useSelector((state) => state.books, shallowEqual);
+  const booksList = books.map((book) => (
+    <Book key={book.id} book={book} />
+  ));
 
   return (
-    <div className="container-book-list">
-      <ul className="book-list">
-        {books.map((book) => (
-          <li key={book.id}>
-            <Book title={book.title} author={book.author} />
-          </li>
-        ))}
-      </ul>
+    <div className="container-books">
+      {booksList}
     </div>
   );
-}
+};
 
 export default BookList;
