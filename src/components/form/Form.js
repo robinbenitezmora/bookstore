@@ -3,36 +3,48 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../../redux/books/books';
 
-function Form() {
-  const [inputText, setInputText] = useState({ title: '', author: '' });
+const Form = () => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
+  const titleInput = React.createRef();
+  const authorInput = React.createRef();
+  const categoryInput = React.createRef();
   const dispatch = useDispatch();
 
-  const onChange = (e) => {
-    setInputText({ ...inputText, [e.target.name]: e.target.value });
-  };
-
-  const submitHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const newBook = {
-      id: uuidv4(),
-      title: inputText.title,
-      author: inputText.author,
+    const book = {
+      item_id: uuidv4(),
+      title,
+      author,
+      category,
     };
-
-    dispatch(addBook(newBook));
-    setInputText({ title: '', author: '' });
+    dispatch(addBook(book));
+    titleInput.current.value = '';
+    authorInput.current.value = '';
+    categoryInput.current.value = '';
   };
 
   return (
-    <div className="container-form">
-      <h2 className="title-form">ADD NEW BOOK</h2>
-      <form onSubmit={submitHandler}>
-        <input type="text" name="title" value={inputText.title} onChange={onChange} placeholder="Book title" />
-        <input type="text" name="author" value={inputText.author} onChange={onChange} placeholder="Author" />
-        <button type="submit" className="btn btn-primary">Add Book</button>
+    <div className="form-container">
+      <h2 className="form-title">ADD NEW BOOK</h2>
+      <form className="form" onSubmit={(e) => handleSubmit(e)}>
+        <input type="text" placeholder="Book title" ref={titleInput} onChange={(e) => setTitle(e.target.value)} />
+        <input type="text" placeholder="Author" ref={authorInput} onChange={(e) => setAuthor(e.target.value)} />
+        <select name="category" id="category" ref={categoryInput} onChange={(e) => setCategory(e.target.value)}>
+          <option value="Action">Action</option>
+          <option value="Biography">Biography</option>
+          <option value="History">History</option>
+          <option value="Horror">Horror</option>
+          <option value="Kids">Kids</option>
+          <option value="Learning">Learning</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+        </select>
+        <button type="submit" className="btn btn-primary">Add book</button>
       </form>
     </div>
   );
-}
+};
 
 export default Form;
