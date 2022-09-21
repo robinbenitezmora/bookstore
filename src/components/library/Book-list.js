@@ -1,16 +1,21 @@
-import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { shallowEqual, useSelector, useDispatch } from 'react-redux';
+import { getBooks } from '../../redux/books/books';
 import Book from '../book/Book';
 
 const BookList = () => {
   const books = useSelector((state) => state.books, shallowEqual);
-  const booksList = books.map((book) => (
-    <Book key={book.id} book={book} />
-  ));
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBooks());
+  });
 
   return (
-    <div className="container-books">
-      {booksList}
+    <div className="book-list">
+      {books.map((book) => (
+        <Book key={book.item_id} book={book} />
+      ))}
     </div>
   );
 };
