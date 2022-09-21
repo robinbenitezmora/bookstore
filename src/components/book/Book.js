@@ -8,8 +8,8 @@ const Book = (props) => {
   const { book } = props;
   const { id, title, author } = book;
 
-  const handleRemoveBook = (book) => {
-    dispatch(removeBook(book.id));
+  const handleRemoveBook = () => {
+    dispatch(removeBook(id));
   };
 
   return (
@@ -34,7 +34,7 @@ export default Book;
 
 Book.defaultProps = {
   book: {
-    id: 0,
+    id: '',
     title: '',
     author: '',
   },
@@ -42,7 +42,7 @@ Book.defaultProps = {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     title: PropTypes.string,
     author: PropTypes.string,
   }),
