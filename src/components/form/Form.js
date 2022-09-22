@@ -25,53 +25,51 @@ const Form = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2 className="form-title">Add New Book</h2>
-      <form className="form">
+    <div className="form">
+      <h2 className="form-title">ADD NEW BOOK</h2>
+      <form
+        className="form-content"
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(addBook({
+            item_id: uuidv4(),
+            title: bookTitle,
+            author: bookAuthor,
+            category: bookCategory,
+          }));
+          titleInput.current.value = '';
+          authorInput.current.value = '';
+          categoryInput.current.value = '';
+        }}
+      >
         <input
           type="text"
           className="form-input"
-          placeholder="Book Title"
-          onChange={manageTitle}
+          placeholder="Book title"
+          onChange={(e) => manageTitle(e)}
+          value={bookTitle}
           ref={titleInput}
+          required
         />
         <input
           type="text"
           className="form-input"
-          placeholder="Book Author"
-          onChange={manageAuthor}
+          placeholder="Author"
+          onChange={(e) => manageAuthor(e)}
+          value={bookAuthor}
           ref={authorInput}
+          required
         />
-        <select
+        <input
+          type="text"
           className="form-input"
-          onChange={manageCategory}
+          placeholder="Category"
+          onChange={(e) => manageCategory(e)}
+          value={bookCategory}
           ref={categoryInput}
-        >
-          <option value="Action">Action</option>
-          <option value="Biography">Biography</option>
-          <option value="History">History</option>
-          <option value="Horror">Horror</option>
-          <option value="Kids">Kids</option>
-          <option value="Learning">Learning</option>
-          <option value="Sci-Fi">Sci-Fi</option>
-        </select>
-        <button
-          type="button"
-          className="form-button"
-          onClick={() => {
-            dispatch(addBook({
-              item_id: uuidv4(),
-              title: bookTitle,
-              author: bookAuthor,
-              category: bookCategory,
-            }));
-            titleInput.current.value = '';
-            authorInput.current.value = '';
-            categoryInput.current.value = '';
-          }}
-        >
-          Add Book
-        </button>
+          required
+        />
+        <button type="submit" className="form-button">Add book</button>
       </form>
     </div>
   );
