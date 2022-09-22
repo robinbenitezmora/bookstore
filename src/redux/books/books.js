@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const API = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/D4yRPSdRWrdzhF200FDV/books';
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
@@ -19,7 +21,14 @@ export default function booksReducer(state = firstState, action = {}) {
 }
 
 const getBooks = () => async (dispatch) => {
-  const response = await fetch(API);
+  const response = await fetch(
+    API, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
   const data = await response.json();
   const books = [];
   Object.keys(data).map((key) => books.push({ item_id: key, ...data[key][0] }));
@@ -36,27 +45,30 @@ const addBook = (book) => async (dispatch) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      item_id: book.id,
+      item_id: uuidv4(),
       title: book.title,
       author: book.author,
       category: book.category,
     }),
   });
-  dispatch({
-    type: ADD_BOOK,
-    payload: book,
-  });
+  // dispatch({
+  //   type: ADD_BOOK,
+  //   payload: book,
+  // });
+  dispatch(getBooks());
 };
 
-const removeBook = (id) => async (dispatch) => {
+const removeBook = (book) => async (dispatch) => {
+  const id = book.item_id;
   await fetch(`${API}/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
-  dispatch({
-    type: REMOVE_BOOK,
-    payload: id,
-  });
+  // dispatch({
+  //   type: REMOVE_BOOK,
+  //   payload: id,
+  // });
+  dispatch(getBooks());
 };
 
 export { addBook, removeBook, getBooks };

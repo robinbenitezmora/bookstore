@@ -9,7 +9,7 @@ const BookList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBooks());
-  });
+  }, [dispatch]);
 
   return (
     <div className="book-list">
