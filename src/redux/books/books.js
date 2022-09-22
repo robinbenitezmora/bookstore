@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import thunk from 'redux-thunk';
 
 const API = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/D4yRPSdRWrdzhF200FDV/books';
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
