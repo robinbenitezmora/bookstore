@@ -3,47 +3,36 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { removeBook } from '../../redux/books/books';
 
-const Book = (props) => {
+function Book({ book }) {
   const dispatch = useDispatch();
-  const { book } = props;
-  const { id, title, author } = book;
-
-  const handleRemoveBook = () => {
-    dispatch(removeBook(id));
-  };
 
   return (
-    <div className="container-book">
-      <div key={id} className="book">
-        <div className="book-info">
-          <p className="book-category">Category</p>
-          <h3 className="book-title">{title}</h3>
-          <p className="book-author">{author}</p>
-          <div className="book-actions">
-            <button type="button" className="btn btn-primary">Comments</button>
-            <button type="button" className="btn btn-primary" onClick={handleRemoveBook}>Remove</button>
-            <button type="button" className="btn btn-primary">Edit</button>
-          </div>
+    <div className="book">
+      <div className="book-info">
+        <p className="book-category">{book.category}</p>
+        <h2 className="book-title">{book.title}</h2>
+        <p className="book-author">
+          Author:
+          {' '}
+          {book.author}
+        </p>
+        <div className="book-buttons">
+          <button type="button" className="book-button">Comments</button>
+          <button type="button" className="book-button" onClick={() => dispatch(removeBook(book))}>Remove</button>
+          <button type="button" className="book-button">Edit</button>
         </div>
       </div>
     </div>
   );
-};
-
-export default Book;
-
-Book.defaultProps = {
-  book: {
-    id: '',
-    title: '',
-    author: '',
-  },
-};
+}
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    author: PropTypes.string,
-  }),
+    item_id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
 };
+
+export default Book;
