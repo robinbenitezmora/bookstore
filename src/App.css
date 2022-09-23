@@ -57,3 +57,177 @@ body {
   letter-spacing: 1.9px;
   color: #121212;
 }
+
+.book {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10.625rem;
+  padding: 2rem 6rem 2rem 2rem;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+  margin-bottom: 4rem;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+}
+
+.book-category {
+  width: 5.5rem;
+  height: 1rem;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 1.9px;
+}
+
+.book-title {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 2rem;
+  font-family: RobotoSlab;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #121212;
+}
+
+.book-author {
+  width: 6.5rem;
+  height: 1rem;
+  margin: 0.25rem 0 0;
+  font-family: RobotoSlab;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+}
+
+.book-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  padding: 1rem 0 0 0;
+  background-color: #fff;
+}
+
+.button {
+  width: 5rem;
+  height: 1.2rem;
+  font-family: RobotoSlab;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+  border: none;
+}
+
+.book-progress {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 25%;
+}
+
+.book-progress-bar {
+  width: 40%;
+  height: auto;
+  border-radius: 0.25rem;
+}
+
+.chapter-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 25%;
+}
+
+.chapter-info-text {
+  width: 10rem;
+  height: 1.25rem;
+  margin: 0 5rem 0 0;
+  opacity: 0.5;
+  font-family: RobotoSlab;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #121212;
+}
+
+.chapter-info-advance {
+  width: 13rem;
+  height: 1.5rem;
+  margin: 0.5rem 0 1.5rem 0;
+  font-family: RobotoSlab;
+  opacity: 0.8;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: -0.4px;
+  color: #121212;
+}
+
+.chapter-info-button {
+  width: 11.5rem;
+  height: 2rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+  color: #fff;
+}
+
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form-title {
+  width: 11rem;
+  height: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.18px;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  width: 27%;
+  height: 3rem;
+  margin: 0.5rem 1rem 0 0;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  opacity: 0.6;
+}
+
+.form-button {
+  width: 18%;
+  height: 3rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.18px;
+  color: #fff;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+  padding: 0.5rem 1rem;
+}
