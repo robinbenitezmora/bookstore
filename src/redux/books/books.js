@@ -21,14 +21,23 @@ export default function booksReducer(state = firstState, action = {}) {
   }
 }
 
-const getBooks = createAsyncThunk(
-  'bookstore/books/GET_BOOKS',
-  async () => {
-    const response = await fetch(API);
-    const data = await response.json();
-    return data;
-  },
-);
+const getBooks = () => async (dispatch) => {
+  const response = await fetch(
+    API, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+  const data = await response.json();
+  const books = [];
+  Object.keys(data).map((key) => books.push({ item_id: key, ...data[key][0] }));
+  dispatch({
+    type: GET_BOOKS,
+    payload: books,
+  });
+};
 
 const addBook = createAsyncThunk(
   'bookstore/books/ADD_BOOK',
