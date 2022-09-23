@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../../redux/books/books';
 
 const Form = () => {
@@ -32,7 +31,6 @@ const Form = () => {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(addBook({
-            // item_id: uuidv4(),
             title: bookTitle,
             author: bookAuthor,
             category: bookCategory,

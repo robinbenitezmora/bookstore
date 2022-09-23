@@ -52,10 +52,6 @@ const addBook = (book) => async (dispatch) => {
       category: book.category,
     }),
   });
-  // dispatch({
-  //   type: ADD_BOOK,
-  //   payload: book,
-  // });
   dispatch(getBooks());
 };
 
@@ -65,10 +61,6 @@ const removeBook = (book) => async (dispatch) => {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
-  // dispatch({
-  //   type: REMOVE_BOOK,
-  //   payload: id,
-  // });
   dispatch(getBooks());
 };
 
