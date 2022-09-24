@@ -18,7 +18,7 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 2.5rem;
 }
 
@@ -70,6 +70,7 @@ body {
   border: solid 1px #e8e8e8;
   background-color: #fff;
   margin-bottom: 4rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .book-info {
