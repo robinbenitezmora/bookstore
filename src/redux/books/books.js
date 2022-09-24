@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const API = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/D4yRPSdRWrdzhF200FDV/books';
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
@@ -39,35 +38,29 @@ const getBooks = () => async (dispatch) => {
   });
 };
 
-const addBook = createAsyncThunk(
-  'bookstore/books/ADD_BOOK',
-  async (book) => {
-    const response = await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: uuidv4(),
-        title: book.title,
-        author: book.author,
-        category: book.category,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    const data = await response.json();
-    return data;
-  },
-);
+const addBook = (book) => async (dispatch) => {
+  await fetch(API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: uuidv4(),
+      title: book.title,
+      author: book.author,
+      category: book.category,
+    }),
+  });
+  dispatch(getBooks());
+};
 
-const removeBook = createAsyncThunk(
-  'bookstore/books/REMOVE_BOOK',
-  async (id) => {
-    const response = await fetch(`${API}/${id}`, {
-      method: 'DELETE',
-    });
-    const data = await response.json();
-    return data;
-  },
-);
+const removeBook = (book) => async (dispatch) => {
+  const id = book.item_id;
+  await fetch(`${API}/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  dispatch(getBooks());
+};
 
-export { getBooks, addBook, removeBook };
+export { addBook, removeBook, getBooks };
