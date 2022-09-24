@@ -14,9 +14,6 @@ const Navbar = () => (
         </li>
       </ul>
     </div>
-    <div className="navbar-user">
-      <img src="../../images/user.png" alt="user" />
-    </div>
   </nav>
 );
 
